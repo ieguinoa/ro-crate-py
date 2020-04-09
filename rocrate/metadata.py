@@ -84,6 +84,16 @@ class _Entity(object):
 class Thing(_Entity):
     pass
 
+
+class DataEntity():
+
+class FileDataEntity(DataEntity):
+
+
+class DirectoryDataEntity(DataEntity):
+
+
+
 class ContextEntity(object):
 
     def __init__(self, entity_constructor=None):
@@ -148,9 +158,33 @@ def _set_class_doc(Class):
         Class.__doc__ = "Entity %s\n%s" % (uri,doc)
     except KeyError:
         pass ## Non-matching class name, ignore
-    
 
-class Metadata(_Entity):    
+
+
+
+class PeopleContextualEntity(ContextualEntity):
+
+    def __init__(self,id_):
+        super().__init__(self,identifier)
+        self.type = 'Person'
+
+
+class OrganizationContextualEntity(ContextualEntity):
+    def __init__(self,id_):
+        super().__init__(self,id_)
+        self.type = 'Organization'
+
+class ContactPointContextualEntity(ContextualEntity):
+    def __init__(self,id_):
+        super().__init__(self,id_)
+        self.type = 'ContactPoint'
+
+
+
+
+
+
+class Metadata(_Entity):
     def __init__(self):
         self._jsonld = self._template()  ## bootstrap needed by the below!
         super().__init__("ro-crate-metadata.jsonld", self)
