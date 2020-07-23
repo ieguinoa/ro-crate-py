@@ -19,6 +19,7 @@ import warnings
 
 from .. import vocabs
 from ..utils import *
+from ..descriptors import SchemaProperty
 
 from .entity import Entity
 from arcp import is_arcp_uri
@@ -61,6 +62,11 @@ The corresponding plural setter supports any iterable (e.g. list):
     dataset.creators = [person1, person2]
 """
 class ContextEntity(Entity):
+
+    name = SchemaProperty()
+    datePublished = 
+    creator = 
+    license =
 
     def __init__(self, crate, identifier, properties=None):
         super(ContextEntity, self).__init__(crate, identifier, properties)
